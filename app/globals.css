@@ -3,8 +3,6 @@
    Design system per Brand Kit v1.0
    ============================================================ */
 
-@import url('./fonts.css');
-
 /* ---------- Tokens ---------- */
 :root {
   /* Palette */
@@ -19,9 +17,10 @@
   --ink-soft: #5A5350;
 
   /* Type */
-  --font-display: 'Poppins', system-ui, sans-serif;
-  --font-body: 'Work Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* Supplied by next/font/local — see app/fonts.js */
+  --font-display: var(--font-poppins), system-ui, sans-serif;
+  --font-body: var(--font-work-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 
   /* Rhythm */
   --shell: 1240px;
@@ -710,6 +709,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: clamp(15px, 1.7vw, 20px);
   letter-spacing: -0.01em;
 }
+.marquee__group span { display: inline-flex; align-items: center; gap: clamp(28px, 4vw, 52px); }
 .marquee__group em { font-style: normal; font-size: .7em; opacity: .55; }
 
 /* ============================================================
@@ -1449,6 +1449,161 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 560px) {
   .field-row { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   ENTRIES — work & journal index
+   ============================================================ */
+.entries { background: var(--paper); }
+.entries__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: clamp(20px, 2.6vw, 32px);
+}
+.entries__empty { font-size: 17px; color: var(--stone); }
+.entries__empty a { color: var(--rose); border-bottom: 1px solid currentColor; }
+
+.entry {
+  display: grid;
+  align-content: start;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform .45s cubic-bezier(.22,1,.36,1), border-color .45s ease, box-shadow .45s ease;
+}
+.entry:hover {
+  transform: translateY(-5px);
+  border-color: var(--pink);
+  box-shadow: 0 20px 48px -30px rgba(44,44,44,.45);
+}
+.entry__figure { overflow: hidden; }
+.entry__figure img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: scale .6s cubic-bezier(.22,1,.36,1);
+}
+.entry:hover .entry__figure img { scale: 1.03; }
+
+.entry__body { display: grid; gap: 10px; padding: clamp(22px, 2.6vw, 32px); }
+.entry__meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+.entry__body h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(20px, 2.1vw, 25px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.entry__body p { font-size: 15.5px; line-height: 1.6; color: var(--ink-soft); text-wrap: pretty; }
+
+.entry__tags,
+.article__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin-top: 4px;
+}
+.entry__tags li,
+.article__tags li {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: var(--blush);
+  color: var(--rose);
+}
+
+/* ============================================================
+   ARTICLE — case study & post body
+   ============================================================ */
+.article { background: var(--paper); }
+.article__shell { display: grid; gap: clamp(28px, 3.4vw, 44px); }
+.article__body {
+  display: grid;
+  gap: 20px;
+  max-width: 68ch;
+  margin-inline: auto;
+  width: 100%;
+}
+.article__body h2,
+.article__body h3,
+.article__body h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-top: 14px;
+}
+.article__body h2 { font-size: clamp(24px, 2.6vw, 31px); }
+.article__body h3 { font-size: clamp(20px, 2.1vw, 24px); }
+.article__body h4 { font-size: 18px; }
+.article__body p { font-size: 17px; line-height: 1.7; color: var(--ink-soft); text-wrap: pretty; }
+.article__body a { color: var(--rose); border-bottom: 1px solid currentColor; }
+.article__body ul { display: grid; gap: 9px; padding-left: 20px; }
+.article__body li { font-size: 16.5px; line-height: 1.6; color: var(--ink-soft); }
+.article__body blockquote {
+  margin: 6px 0;
+  padding-left: 24px;
+  border-left: 2px solid var(--pink);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.45;
+  color: var(--charcoal);
+  text-wrap: pretty;
+}
+.article__body strong { color: var(--charcoal); font-weight: 600; }
+.article__tags { justify-content: center; }
+.article__back { text-align: center; }
+
+/* ============================================================
+   FORM STATES
+   ============================================================ */
+.field__error {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--rose);
+}
+.field input[aria-invalid='true'],
+.field textarea[aria-invalid='true'] { border-color: var(--rose); }
+
+.form-notice {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--charcoal);
+  background: var(--blush);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+/* Off-screen rather than display:none — bots skip hidden fields. */
+.field-honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-result { display: grid; gap: 12px; }
+.form-result h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(21px, 2.2vw, 26px);
+  letter-spacing: -0.01em;
+}
+.form-result p { color: var(--ink-soft); }
+.form-result a { color: var(--rose); border-bottom: 1px solid currentColor; }
 
 /* ============================================================
    SIGN-OFF

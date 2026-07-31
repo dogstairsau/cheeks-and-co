@@ -390,6 +390,141 @@ function initCarousel() {
 }
 
 /* ------------------------------------------------------------
+   Service detail template
+   One page, driven by ?s=<slug>. Keeps a single template to
+   maintain rather than seven near-identical files; swap this for
+   real routes or a CMS when the content grows its own life.
+   ------------------------------------------------------------ */
+const SERVICES = {
+  'marketing-strategy': {
+    title: 'Marketing Strategy',
+    tag: 'Marketing your business starts with a strong plan.',
+    icon: '/icons/marketing-strategy.webp',
+    body: [
+      `Smart, data-led marketing strategies that drive real business outcomes. We start by
+       understanding your business properly — not just the brief, but the commercial reality
+       behind it.`,
+      `From there we build a plan that's considered, purposeful and tailored to you. Free from
+       external pressures and agendas, our recommendations are always in your best interest:
+       designed to deliver real impact and measurable results, not just activity.`,
+    ],
+    list: ['Market research', 'Audience profiling', 'Brand positioning', 'Campaign strategy'],
+  },
+  'digital-advertising': {
+    title: 'Digital Advertising',
+    tag: 'Google & Meta advertising.',
+    icon: '/icons/digital-advertising.webp',
+    body: [
+      `We specialise in performance-driven digital campaigns powered by Zib Digital. Every
+       campaign is built around what you actually need it to do — leads, bookings, sales — not
+       vanity metrics.`,
+      `Our production team prides itself on driving results with a transparent dashboard, so you
+       can see exactly where the money went and what it returned.`,
+    ],
+    list: ['Google Ads', 'Meta advertising', 'Transparent reporting', 'Ongoing optimisation'],
+  },
+  'media-buying': {
+    title: 'Traditional Media Buying',
+    tag: 'Radio, print, TV & outdoor.',
+    icon: '/icons/media-buying.webp',
+    body: [
+      `Strategic planning and negotiation across traditional channels. Deep industry
+       relationships mean we can plan and negotiate with confidence — and pass that value
+       straight through to you.`,
+      `We manage metro and regional radio, television, print and outdoor placements to maximise
+       your branding reach.`,
+    ],
+    list: ['Metro & regional radio', 'Television', 'Print', 'Outdoor placement'],
+  },
+  'website-development': {
+    title: 'Website Development',
+    tag: 'Website design, development and SEO.',
+    icon: '/icons/website-development.webp',
+    body: [
+      `We work with a partnering company to build conversion-focused websites — sites built to
+       do a job, not just to look good in a portfolio.`,
+      `That covers planning, design and ongoing SEO performance, so the site keeps earning its
+       keep long after launch.`,
+    ],
+    list: ['Website design', 'Development', 'On-page SEO', 'Ongoing performance'],
+  },
+  'graphic-design': {
+    title: 'Graphic Design',
+    tag: 'Bringing your thoughts to life.',
+    icon: '/icons/graphic-design.webp',
+    body: [
+      `Strategic creative including branding, campaign assets, ad creative, video production,
+       photography, and print and digital design.`,
+      `Creative that's tied to the strategy behind it — so every asset is working towards the
+       same outcome rather than just looking the part.`,
+    ],
+    list: ['Branding', 'Campaign & ad creative', 'Video & photography', 'Print & digital design'],
+  },
+  'organic-social': {
+    title: 'Organic Social Media',
+    tag: 'Facebook, Instagram, LinkedIn & more.',
+    icon: '/icons/organic-social.webp',
+    body: [
+      `Consistent content planning, scheduling, community engagement, caption writing and growth
+       strategy — the unglamorous consistency that actually builds an audience.`,
+      `Backed by detailed monthly reporting, so you can see what's landing and what isn't.`,
+    ],
+    list: ['Content planning', 'Community engagement', 'Growth strategy', 'Monthly reporting'],
+  },
+  'partnership-management': {
+    title: 'Partnership Management',
+    tag: 'Our network is wide.',
+    icon: '/icons/marketing-strategy.webp',
+    body: [
+      `Brand partnerships, sponsorship negotiation and influencer collaborations that put your
+       brand where its audience already is.`,
+      `Plus full event planning and execution to elevate brand exposure — handled end to end.`,
+    ],
+    list: ['Brand partnerships', 'Sponsorship negotiation', 'Influencer collaboration', 'Event planning'],
+  },
+};
+
+function initServicePage() {
+  const titleEl = document.querySelector('[data-service-title]');
+  if (!titleEl) return;
+
+  const slug = new URLSearchParams(window.location.search).get('s');
+  const service = SERVICES[slug];
+  if (!service) return; // template ships with Marketing Strategy as the default
+
+  const set = (sel, fn) => {
+    const el = document.querySelector(sel);
+    if (el) fn(el);
+  };
+
+  document.title = `${service.title} — Services | Cheeks & Co. Media`;
+  titleEl.textContent = service.title;
+  titleEl.dataset.originalText = service.title;
+
+  set('[data-service-crumb]', (el) => (el.textContent = service.title));
+  set('[data-service-tag]', (el) => (el.textContent = service.tag));
+  set('[data-service-icon]', (el) => (el.src = service.icon));
+  set('[data-service-body]', (el) => {
+    el.replaceChildren(
+      ...service.body.map((text) => {
+        const p = document.createElement('p');
+        p.textContent = text.replace(/\s+/g, ' ').trim();
+        return p;
+      })
+    );
+  });
+  set('[data-service-list]', (el) => {
+    el.replaceChildren(
+      ...service.list.map((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        return li;
+      })
+    );
+  });
+}
+
+/* ------------------------------------------------------------
    Boot
    ------------------------------------------------------------ */
 function init() {
@@ -402,6 +537,7 @@ function init() {
   initSmoothScroll();
   initNav();
   initAnchors();
+  initServicePage(); // before initHero — the split runs on final text
   initHero();
   initReveals();
   initMarquee();

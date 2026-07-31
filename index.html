@@ -1,24 +1,12 @@
 <!doctype html>
 <html lang="en-AU">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--#include partials/head.html -->
 <title>Cheeks &amp; Co. Media — Independent marketing. Thoughtfully done, expertly delivered.</title>
 <meta name="description" content="Cheeks &amp; Co. Media is a full-service independent marketing collective in Adelaide, working with ambitious businesses across Australia. Strategy, media buying, digital advertising, social and design.">
-<meta name="theme-color" content="#2C2C2C">
 <link rel="canonical" href="https://www.cheeksandco.com.au/">
-<link rel="icon" href="/brand/cheek-mark.png" type="image/png">
-<link rel="apple-touch-icon" href="/brand/cheek-mark.png">
-
-<meta property="og:type" content="website">
 <meta property="og:title" content="Cheeks &amp; Co. Media — Where bold ideas meet real results">
 <meta property="og:description" content="Independent marketing. Thoughtfully done, expertly delivered. An Adelaide-based marketing collective working with ambitious businesses across Australia.">
-<meta property="og:image" content="/brand/logo-lockup.png">
-<meta property="og:locale" content="en_AU">
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="preload" href="/fonts/poppins-600-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/worksans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 
 <script type="application/ld+json">
 {
@@ -45,59 +33,10 @@
   ]
 }
 </script>
-
-<link rel="stylesheet" href="/src/styles/main.css">
-
-<script>
-  /* Flag the document synchronously so reveal targets never flash in
-     before GSAP takes over. Motion-averse visitors keep static content. */
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.documentElement.classList.add('js-anim');
-    // Safety net: if the motion module never boots (blocked, failed parse,
-    // offline chunk), drop the pre-hide so the page is still fully readable.
-    setTimeout(function () {
-      if (!document.documentElement.hasAttribute('data-motion-ready')) {
-        document.documentElement.classList.remove('js-anim');
-      }
-    }, 2500);
-  }
-</script>
 </head>
 
-<body>
-<a class="skip-link" href="#main">Skip to content</a>
-
-<!-- ─────────────────────────── NAV ─────────────────────────── -->
-<header class="nav" id="nav" data-nav>
-  <div class="nav__inner">
-    <a class="nav__logo" href="#top" aria-label="Cheeks and Co. Media — home">
-      <img src="/brand/logo-lockup-transparent.png" alt="Cheeks and Co. Media" width="1000" height="429">
-    </a>
-
-    <nav class="nav__links" aria-label="Primary">
-      <a href="#approach">Approach</a>
-      <a href="#services">Services</a>
-      <a href="#team">Team</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="nav__actions">
-      <a class="btn btn--pink btn--sm" href="#contact">Let's connect</a>
-      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
-        <span class="nav__toggle-label">Menu</span>
-        <span class="nav__toggle-bars" aria-hidden="true"><i></i><i></i></span>
-      </button>
-    </div>
-  </div>
-
-  <div class="nav__mobile" id="mobile-menu" data-mobile-menu hidden>
-    <a href="#approach">Approach</a>
-    <a href="#services">Services</a>
-    <a href="#team">Team</a>
-    <a href="#contact">Contact</a>
-    <a class="nav__mobile-cta" href="tel:+61409095380">0409 095 380</a>
-  </div>
-</header>
+<body data-page="home">
+<!--#include partials/nav.html -->
 
 <main id="main">
 
@@ -118,27 +57,15 @@
     </p>
 
     <div class="hero__actions" data-hero-item>
-      <a class="btn btn--pink" href="#contact">Let's connect</a>
-      <a class="btn btn--ghost" href="#services">See what we do</a>
+      <a class="btn btn--pink" href="contact.html">Let's connect</a>
+      <a class="btn btn--ghost" href="services.html">See what we do</a>
     </div>
 
     <dl class="hero__facts" data-hero-item>
-      <div class="hero__fact">
-        <dt>Based</dt>
-        <dd>Adelaide, SA</dd>
-      </div>
-      <div class="hero__fact">
-        <dt>Working</dt>
-        <dd>Australia-wide</dd>
-      </div>
-      <div class="hero__fact">
-        <dt>Experience</dt>
-        <dd>20+ years</dd>
-      </div>
-      <div class="hero__fact">
-        <dt>Agenda</dt>
-        <dd>Yours only</dd>
-      </div>
+      <div class="hero__fact"><dt>Based</dt><dd>Adelaide, SA</dd></div>
+      <div class="hero__fact"><dt>Working</dt><dd>Australia-wide</dd></div>
+      <div class="hero__fact"><dt>Experience</dt><dd>20+ years</dd></div>
+      <div class="hero__fact"><dt>Agenda</dt><dd>Yours only</dd></div>
     </dl>
   </div>
 
@@ -148,35 +75,31 @@
   </div>
 </section>
 
-<div class="swoop swoop--flip swoop--from-charcoal swoop--to-pink" aria-hidden="true">
+<div class="swoop swoop--flip swoop--from-charcoal swoop--to-paper" aria-hidden="true">
   <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 92C380 126 780 46 1440 16V120H0Z"/></svg>
 </div>
 
-<!-- ─────────────────────────── MARQUEE ─────────────────────────── -->
-<section class="marquee" aria-label="Our services at a glance">
-  <div class="marquee__track" data-marquee>
-    <div class="marquee__group">
-      <span>Marketing Strategy</span><em aria-hidden="true">✦</em>
-      <span>Digital Advertising</span><em aria-hidden="true">✦</em>
-      <span>Media Buying</span><em aria-hidden="true">✦</em>
-      <span>Website Development</span><em aria-hidden="true">✦</em>
-      <span>Graphic Design</span><em aria-hidden="true">✦</em>
-      <span>Organic Social</span><em aria-hidden="true">✦</em>
-      <span>Partnerships</span><em aria-hidden="true">✦</em>
-    </div>
+<!-- ───────────── SHOWCASE — the team, up front ───────────── -->
+<section class="showcase">
+  <div class="shell">
+    <figure class="showcase__figure" data-reveal>
+      <img src="/photos/chelsea-jacqui.webp" alt="Chelsea Teelow and Jacqui Leopardi at the Cheeks &amp; Co. Media office, beside a wall reading “Plug into our energy and watch your world accelerate.”" width="1500" height="1000" fetchpriority="high" decoding="async">
+    </figure>
   </div>
 </section>
 
-<div class="swoop swoop--from-pink swoop--to-paper" aria-hidden="true">
+<!--#include partials/clients.html -->
+
+<div class="swoop swoop--flip swoop--from-paper swoop--to-blush" aria-hidden="true">
   <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 92C380 126 780 46 1440 16V120H0Z"/></svg>
 </div>
 
 <!-- ─────────────────────────── APPROACH ─────────────────────────── -->
-<section class="section approach" id="approach">
+<section class="section approach approach--blush" id="approach">
   <div class="shell">
     <div class="section__head" data-reveal>
-      <span class="index">01</span>
-      <h2 class="section__title">The&nbsp;approach</h2>
+      <span class="index">The approach</span>
+      <h2 class="section__title">Where bold ideas<br>meet real results</h2>
     </div>
 
     <div class="approach__grid">
@@ -207,7 +130,7 @@
       </div>
 
       <figure class="approach__figure" data-reveal>
-        <img src="/photos/working-session.webp" alt="The Cheeks &amp; Co. team in a working session around the boardroom table" width="1000" height="667" loading="lazy" decoding="async">
+        <img src="/photos/working-session.webp" alt="The Cheeks &amp; Co. team in a working session around the boardroom table" width="1500" height="1000" loading="lazy" decoding="async">
         <figcaption>No silos, no handballs — just the right people at the right time.</figcaption>
       </figure>
     </div>
@@ -229,151 +152,39 @@
   </div>
 </section>
 
-<div class="swoop swoop--flip swoop--from-paper swoop--to-blush" aria-hidden="true">
-  <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 92C380 126 780 46 1440 16V120H0Z"/></svg>
-</div>
+<!-- ─────────────────────────── MARQUEE ─────────────────────────── -->
+<section class="marquee" aria-label="Our services at a glance">
+  <div class="marquee__track" data-marquee>
+    <div class="marquee__group">
+      <span>Marketing Strategy</span><em aria-hidden="true">✦</em>
+      <span>Digital Advertising</span><em aria-hidden="true">✦</em>
+      <span>Media Buying</span><em aria-hidden="true">✦</em>
+      <span>Website Development</span><em aria-hidden="true">✦</em>
+      <span>Graphic Design</span><em aria-hidden="true">✦</em>
+      <span>Organic Social</span><em aria-hidden="true">✦</em>
+      <span>Partnerships</span><em aria-hidden="true">✦</em>
+    </div>
+  </div>
+</section>
 
 <!-- ─────────────────────────── SERVICES ─────────────────────────── -->
 <section class="section services" id="services">
   <div class="shell">
     <div class="section__head" data-reveal>
-      <span class="index">02</span>
+      <span class="index">What we do</span>
       <h2 class="section__title">How we make<br>brands shine</h2>
       <p class="section__note">If it sits under marketing, it's in our wheelhouse.</p>
     </div>
 
-    <div class="carousel" data-carousel role="group" aria-roledescription="carousel" aria-label="Our services">
-      <div
-        class="carousel__viewport"
-        data-carousel-viewport
-        data-lenis-prevent
-        tabindex="0"
-        aria-label="Services — scroll horizontally to browse"
-      >
-        <div class="carousel__track" data-carousel-track data-reveal-stagger>
+    <!--#include partials/service-carousel.html -->
 
-      <article class="service">
-        <span class="service__num">01</span>
-        <span class="service__icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="6.5"/><circle cx="16" cy="16" r="1.4" fill="currentColor" stroke="none"/>
-            <path d="M16 4V1M16 31v-3M4 16H1M31 16h-3"/>
-          </svg>
-        </span>
-        <h3>Marketing Strategy</h3>
-        <p class="service__tag">Marketing your business starts with a strong plan.</p>
-        <p>Smart, data-led strategies that drive real business outcomes — market research, audience profiling, brand positioning and campaign strategy.</p>
-      </article>
-
-      <article class="service">
-        <span class="service__num">02</span>
-        <span class="service__icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 5.5 26 14l-8.4 3.2L14.4 26 6 5.5Z"/><path d="m19 19 6.5 6.5"/>
-          </svg>
-        </span>
-        <h3>Digital Advertising</h3>
-        <p class="service__tag">Google &amp; Meta advertising.</p>
-        <p>Performance-driven digital campaigns powered by Zib Digital. Our production team prides itself on driving results with a transparent dashboard.</p>
-      </article>
-
-      <article class="service">
-        <span class="service__num">03</span>
-        <span class="service__icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="16" cy="18" r="3.2"/>
-            <path d="M10.5 12.5a7.5 7.5 0 0 0 0 11M21.5 12.5a7.5 7.5 0 0 1 0 11"/>
-            <path d="M6.5 8.5a13 13 0 0 0 0 19M25.5 8.5a13 13 0 0 1 0 19"/>
-          </svg>
-        </span>
-        <h3>Traditional Media Buying</h3>
-        <p class="service__tag">Radio, print, TV &amp; outdoor.</p>
-        <p>Strategic planning and negotiation across traditional channels. We manage metro and regional radio, television, print and outdoor placements to maximise your reach.</p>
-      </article>
-
-      <article class="service">
-        <span class="service__num">04</span>
-        <span class="service__icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3.5" y="5.5" width="25" height="21" rx="3"/><path d="M3.5 11.5h25"/>
-            <circle cx="8" cy="8.5" r=".9" fill="currentColor" stroke="none"/><circle cx="11.5" cy="8.5" r=".9" fill="currentColor" stroke="none"/>
-            <path d="m13 16-3 3 3 3M19 16l3 3-3 3"/>
-          </svg>
-        </span>
-        <h3>Website Development</h3>
-        <p class="service__tag">Design, development and SEO.</p>
-        <p>We work with a partnering company to build conversion-focused websites — planning, design and ongoing SEO performance.</p>
-      </article>
-
-      <article class="service">
-        <span class="service__num">05</span>
-        <span class="service__icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.5 4.5 27.5 11.5 12 27H5v-7L20.5 4.5Z"/><path d="M17.5 7.5 24.5 14.5"/>
-          </svg>
-        </span>
-        <h3>Graphic Design</h3>
-        <p class="service__tag">Bringing your thoughts to life.</p>
-        <p>Strategic creative including branding, campaign assets, ad creative, video production, photography, and print and digital design.</p>
-      </article>
-
-      <article class="service">
-        <span class="service__num">06</span>
-        <span class="service__icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4.5 8.5a3 3 0 0 1 3-3h11a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-7l-4.5 3.5V17.5h-.5a3 3 0 0 1-3-3v-6Z"/>
-            <path d="M24 11.5h.5a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H24v3.5L19.5 23.5H14"/>
-          </svg>
-        </span>
-        <h3>Organic Social Media</h3>
-        <p class="service__tag">Facebook, Instagram, LinkedIn &amp; more.</p>
-        <p>Consistent content planning, scheduling, community engagement, caption writing, growth strategy and detailed monthly reporting.</p>
-      </article>
-
-      <article class="service">
-        <span class="service__num">07</span>
-        <span class="service__icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="16" r="6.5"/><circle cx="21" cy="16" r="6.5"/>
-          </svg>
-        </span>
-        <h3>Partnership Management</h3>
-        <p class="service__tag">Our network is wide.</p>
-        <p>Brand partnerships, sponsorship negotiation, influencer collaborations, and full event planning and execution to elevate brand exposure.</p>
-      </article>
-
-      <a class="service service--cta" href="#contact">
-        <span class="service__num">→</span>
-        <h3>Not sure where to start?</h3>
-        <p>Tell us what you're trying to grow. We'll tell you honestly what will move the needle — and what won't.</p>
-        <span class="service__link">Let's talk</span>
-      </a>
-
-        </div>
-      </div>
-
-      <div class="carousel__controls">
-        <div class="carousel__progress" aria-hidden="true">
-          <span data-carousel-bar></span>
-        </div>
-        <div class="carousel__buttons">
-          <button class="carousel__btn" type="button" data-carousel-prev aria-label="Previous services">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M15 5 8 12l7 7"/>
-            </svg>
-          </button>
-          <button class="carousel__btn" type="button" data-carousel-next aria-label="Next services">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="m9 5 7 7-7 7"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
+    <p class="services__more" data-reveal>
+      <a class="btn btn--outline-dark" href="services.html">See all services</a>
+    </p>
   </div>
 </section>
 
-<div class="swoop swoop--from-blush swoop--to-charcoal" aria-hidden="true">
+<div class="swoop swoop--from-paper swoop--to-charcoal" aria-hidden="true">
   <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 92C380 126 780 46 1440 16V120H0Z"/></svg>
 </div>
 
@@ -399,91 +210,12 @@
   </div>
 </section>
 
-<div class="swoop swoop--flip swoop--from-charcoal swoop--to-paper" aria-hidden="true">
-  <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 92C380 126 780 46 1440 16V120H0Z"/></svg>
-</div>
-
-<!-- ─────────────────────────── TEAM ─────────────────────────── -->
-<section class="section team" id="team">
-  <div class="shell">
-    <div class="section__head" data-reveal>
-      <span class="index">03</span>
-      <h2 class="section__title">Hi, it's nice<br>to meet you</h2>
-      <p class="section__note">
-        Cheeks &amp; Co. Media began the way many great ideas do: a little industry chit chat
-        over dinner, with a glass (or two) of champagne. In 2025 it was born — grounded in
-        transparency, guided by intelligent strategy, and just a little bit cheeky.
-      </p>
-    </div>
-
-    <figure class="team__hero" data-reveal>
-      <img src="/photos/chelsea-jacqui.webp" alt="Chelsea Teelow and Jacqui Leopardi at the Cheeks &amp; Co. Media office" width="1000" height="667" loading="lazy" decoding="async">
-    </figure>
-
-    <div class="team__grid" data-reveal-stagger>
-      <article class="person">
-        <h3>Chelsea Teelow</h3>
-        <p class="person__role">Director of Cheek &amp; Sparkle</p>
-        <p>
-          With over 20 years across sales, marketing and media, Chelsea has worked with
-          hundreds of brands — from small local businesses to major national companies across
-          radio, digital and integrated media. Her career started in hospitality before senior
-          sales roles with Telstra and Southern Cross Austereo.
-        </p>
-        <p>
-          She's known for strong relationships, big ideas, and a track record of delivering
-          results that move the needle.
-        </p>
-        <blockquote>
-          Getting results for clients is what I do best. I treat every campaign like it's my
-          own business, because their results deserve nothing less.
-        </blockquote>
-      </article>
-
-      <article class="person">
-        <h3>Jacqui Leopardi</h3>
-        <p class="person__role">Head of Making Everything Happen</p>
-        <p>
-          Jacqui has built her career working with some of the world's most recognised brands,
-          including Nestlé, Southern Cross Austereo and Red Bull Australia, where she held the
-          role of State Manager. Along the way she developed a sharp instinct for building
-          brands that don't just look impressive in a deck, but actually deliver measurable
-          growth.
-        </p>
-        <p>
-          Detail driven, commercially minded and unapologetically results-focused — she keeps
-          the wheels turning, the standards high, and the promises not just met but exceeded.
-        </p>
-        <blockquote>
-          If it's been said, signed, or even slightly implied… Jacqui's already onto it.
-        </blockquote>
-      </article>
-    </div>
-
-    <div class="team__note" data-reveal>
-      <figure class="team__note-figure">
-        <img src="/photos/team-foyer.webp" alt="The wider Cheeks &amp; Co. Media team" width="1000" height="667" loading="lazy" decoding="async">
-      </figure>
-      <div>
-        <h3>And an exceptional team behind us</h3>
-        <p>
-          Success isn't about having all the answers. It's about having the right people in the
-          room when the questions get asked. From the very first audit through to strategy,
-          presentation, onboarding and ongoing delivery, our specialists work seamlessly
-          together — clever enough, curious enough, and just cheeky enough to figure it out and
-          then execute it brilliantly.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ─────────────────────────── TESTIMONIALS ─────────────────────────── -->
-<section class="section testimonials" id="work">
+<section class="section testimonials">
   <div class="shell">
     <div class="section__head" data-reveal>
-      <span class="index">04</span>
-      <h2 class="section__title">Some legends<br>we work with</h2>
+      <span class="index index--pink">In their words</span>
+      <h2 class="section__title">Don't just<br>take our word</h2>
     </div>
 
     <div class="testimonials__grid" data-reveal-stagger>
@@ -525,80 +257,9 @@
   </div>
 </section>
 
-<div class="swoop swoop--from-charcoal swoop--to-pink" aria-hidden="true">
-  <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 92C380 126 780 46 1440 16V120H0Z"/></svg>
-</div>
-
-<!-- ─────────────────────────── CTA ─────────────────────────── -->
-<section class="cta" id="contact">
-  <div class="shell cta__inner">
-    <p class="eyebrow eyebrow--dark" data-reveal>Ready to grow your business?</p>
-    <h2 class="cta__title" data-reveal>Big ideas,<br>real impact.</h2>
-    <p class="cta__lead" data-reveal>
-      Plug into our energy and watch your world accelerate.
-    </p>
-
-    <div class="cta__actions" data-reveal>
-      <a class="btn btn--dark" href="mailto:hello@cheeksandco.com.au">hello@cheeksandco.com.au</a>
-      <a class="btn btn--outline-dark" href="tel:+61409095380">0409 095 380</a>
-    </div>
-
-    <address class="cta__address" data-reveal>
-      2–4 Greenhill Road, Wayville, SA 5034
-    </address>
-  </div>
-</section>
-
-<div class="swoop swoop--from-pink swoop--to-paper" aria-hidden="true">
-  <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 92C380 126 780 46 1440 16V120H0Z"/></svg>
-</div>
-
-<!-- ─────────────────────────── SIGN-OFF ─────────────────────────── -->
-<section class="signoff" aria-label="Marketing you can feel">
-  <img class="signoff__mark" src="/brand/cheek-mark.png" alt="" aria-hidden="true">
-  <div class="shell signoff__inner">
-    <img class="signoff__logo" src="/brand/logo-lockup-transparent.png" alt="Cheeks and Co. Media" width="1000" height="429" loading="lazy" decoding="async">
-    <p class="signoff__line" data-reveal>Marketing<br>you can <em>feel.</em></p>
-  </div>
-</section>
-
-<div class="swoop swoop--flip swoop--from-paper swoop--to-charcoal" aria-hidden="true">
-  <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 92C380 126 780 46 1440 16V120H0Z"/></svg>
-</div>
-
+<!--#include partials/cta.html -->
 </main>
 
-<!-- ─────────────────────────── FOOTER ─────────────────────────── -->
-<footer class="footer">
-  <div class="shell footer__inner">
-    <div class="footer__brand">
-      <img src="/brand/logo-lockup-transparent.png" alt="Cheeks and Co. Media" width="1000" height="429">
-      <p>Independent marketing.<br>Thoughtfully done, expertly delivered.</p>
-    </div>
-
-    <nav class="footer__nav" aria-label="Footer">
-      <h2>Explore</h2>
-      <a href="#top">Home</a>
-      <a href="#approach">Approach</a>
-      <a href="#services">Services</a>
-      <a href="#team">Team</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="footer__contact">
-      <h2>Let's talk</h2>
-      <a href="mailto:hello@cheeksandco.com.au">hello@cheeksandco.com.au</a>
-      <a href="tel:+61409095380">0409 095 380</a>
-      <address>2–4 Greenhill Road<br>Wayville, SA, 5034</address>
-    </div>
-  </div>
-
-  <div class="shell footer__base">
-    <p>© <span data-year>2026</span> Cheeks &amp; Co. Media · Wayville SA</p>
-    <p>Adelaide based · Servicing Australia-wide</p>
-  </div>
-</footer>
-
-<script type="module" src="/src/js/main.js"></script>
+<!--#include partials/footer.html -->
 </body>
 </html>

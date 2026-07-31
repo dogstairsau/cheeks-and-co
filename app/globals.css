@@ -495,67 +495,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   justify-items: start;
 }
 
-/* ---------- Split hero ---------- */
-/* Type on the charcoal left, photograph bleeding off the right. Keeps the
-   brand's charcoal ground and Poppins scale while giving the photo real
-   presence — a full-bleed image behind the headline would need a scrim, and
-   the wall text inside the photo would fight the H1. */
-.hero--split {
-  display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-  align-items: center;
-  gap: clamp(28px, 4vw, 60px);
-  padding-inline: 0;
-}
-/* Aligns the text column's left edge with the shell used by every other
-   section, instead of an arbitrary column gutter. */
-.hero--split .hero__inner {
-  margin-inline: 0;
-  max-width: none;
-  padding-left: max(var(--gutter), calc((100vw - var(--shell)) / 2));
-  padding-right: clamp(16px, 2vw, 32px);
-}
-
-.hero__media {
-  position: relative;
-  align-self: stretch;
-  min-height: min(72svh, 620px);
-  margin-block: clamp(16px, 3vh, 40px);
-  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
-  overflow: hidden;
-}
-.hero__media img {
-  object-fit: cover;
-  /* Holds both faces in frame as the column narrows. */
-  object-position: 44% center;
-}
-
-/* The photo now carries the right-hand side, so the watermark moves behind
-   the type and the scroll cue steps out of the picture's way. */
-.hero--split .hero__watermark {
-  right: auto;
-  left: -20%;
-  height: 56%;
-  opacity: .08;
-}
-.hero--split .hero__scroll { display: none; }
-
-@media (max-width: 900px) {
-  .hero--split {
-    grid-template-columns: 1fr;
-    gap: clamp(28px, 5vw, 44px);
-  }
-  .hero--split .hero__inner {
-    padding-inline: var(--gutter);
-  }
-  .hero__media {
-    min-height: 0;
-    aspect-ratio: 3 / 2;
-    margin-inline: var(--gutter) 0;
-    margin-bottom: 0;
-  }
-}
-
 .hero__title {
   font-family: var(--font-display);
   font-weight: 600;
@@ -580,10 +519,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .hero__facts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(clamp(145px, 16vw, 195px), 1fr));
-  gap: 22px 32px;
+  /* Fixed 4-up. An earlier auto-fit min-track change (meant for the logo
+     grids) leaked in here and orphaned "Agenda" onto a second row. */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px 28px;
   width: 100%;
-  max-width: 720px;
+  max-width: 760px;
   margin-top: clamp(24px, 4vw, 44px);
   padding-top: 26px;
   border-top: 1px solid rgba(255,255,255,.14);

@@ -15,6 +15,20 @@ Built to Brand Kit v1.0.
 
 No framework, no CSS library — plain HTML, CSS and ES modules.
 
+## Deploying
+
+`.github/workflows/deploy.yml` builds and publishes to GitHub Pages on push.
+
+**One-time setup:** in the repo, go to **Settings → Pages** and set **Source** to
+**GitHub Actions**. The workflow asks `configure-pages` to enable Pages automatically,
+but the Actions token isn't permitted to create a Pages site, so the first run fails with
+`Resource not accessible by integration` until the source is set by hand. After that,
+every push to `main` or the feature branch deploys, and the URL appears on the workflow
+run's `deploy` job.
+
+Pages serves from `/<repo>/`, so CI passes `BASE_PATH`; local dev and any custom-domain
+deploy stay at `/`.
+
 ## Getting started
 
 ```bash

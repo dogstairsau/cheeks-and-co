@@ -866,6 +866,61 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* ============================================================
+   SIGN-OFF
+   Mirrors the brand's email footer: the Cheek Mark bleeding off the
+   left edge as a pale wash, the lockup sitting on it, and the tagline
+   set large opposite.
+   ============================================================ */
+.signoff {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--paper);
+  padding-block: clamp(56px, 8vw, 110px);
+}
+
+.signoff__mark {
+  position: absolute;
+  z-index: -1;
+  left: -9%;
+  top: 50%;
+  translate: 0 -50%;
+  width: min(64vw, 620px);
+  opacity: .3;
+  pointer-events: none;
+}
+
+.signoff__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(32px, 5vw, 72px);
+}
+
+.signoff__logo { width: clamp(190px, 26vw, 320px); }
+
+.signoff__line {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(30px, 5.4vw, 62px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  text-align: right;
+  color: var(--charcoal);
+}
+/* Deep Rose rather than Cheeks Pink: pink on a light ground fails
+   contrast (brand kit), and this line has to be readable. */
+.signoff__line em { font-style: normal; color: var(--rose); }
+
+@media (max-width: 720px) {
+  .signoff__inner { justify-content: flex-start; }
+  .signoff__line { text-align: left; }
+  .signoff__mark { width: 88vw; opacity: .22; }
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .footer { background: var(--charcoal); color: var(--white); padding-block: clamp(56px, 7vw, 88px) 32px; }

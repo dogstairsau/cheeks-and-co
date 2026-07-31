@@ -246,6 +246,137 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .nav__mobile a[aria-current="page"],
 .footer__nav a[aria-current="page"] { color: var(--pink); }
 
+/* ---------- Mega menu ---------- */
+.nav__mega-wrap { position: static; }
+
+.nav__mega-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  position: relative;
+  padding-block: 4px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 14px;
+  color: inherit;
+  transition: color .3s ease;
+}
+.nav__mega-toggle::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1.5px;
+  background: var(--pink);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .4s cubic-bezier(.22,1,.36,1);
+}
+.nav__mega-toggle:hover { color: var(--white); }
+.nav__mega-toggle:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav__mega-toggle[aria-current="page"] { color: var(--pink); }
+.nav__mega-toggle[aria-current="page"]::after { transform: scaleX(1); }
+
+.nav__chevron { width: 11px; height: 8px; transition: rotate .35s ease; }
+.nav__mega-toggle[aria-expanded="true"] { color: var(--pink); }
+.nav__mega-toggle[aria-expanded="true"] .nav__chevron { rotate: 180deg; }
+
+.mega {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50% 0;
+  width: min(960px, calc(100vw - var(--gutter) * 2));
+  margin-top: 10px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 32px 70px -34px rgba(44,44,44,.5);
+  padding: clamp(22px, 2.4vw, 32px);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .28s ease, transform .32s cubic-bezier(.22,1,.36,1);
+  z-index: 110;
+}
+.mega[data-open] { opacity: 1; transform: translateY(0); }
+
+.mega__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, .75fr);
+  gap: clamp(20px, 2.4vw, 34px);
+}
+
+.mega__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mega__grid a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 13px;
+  padding: 11px 12px;
+  border-radius: 14px;
+  transition: background-color .28s ease;
+}
+.mega__grid a:hover { background: var(--blush); }
+.mega__grid img { width: 34px; height: 34px; object-fit: contain; }
+.mega__grid span { display: grid; gap: 2px; min-width: 0; }
+.mega__grid strong {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--charcoal);
+}
+.mega__grid span { font-size: 12.5px; line-height: 1.45; color: var(--stone); }
+
+.mega__aside {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  background: var(--blush);
+  border-radius: var(--radius);
+  padding: clamp(20px, 2.2vw, 26px);
+}
+.mega__kicker {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--charcoal);
+}
+.mega__copy { font-size: 13px; line-height: 1.55; color: var(--ink-soft); }
+.mega__aside .btn { justify-self: start; }
+.mega__all {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rose);
+  transition: color .3s ease;
+}
+.mega__all:hover { color: var(--charcoal); }
+
+/* Dims the page behind an open panel, matching the nav's own timing. */
+.nav__scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: rgba(44, 44, 44, .34);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.nav__scrim[data-open] { opacity: 1; }
+
+@media (max-width: 1040px) {
+  .mega__inner { grid-template-columns: 1fr; }
+  .mega__aside { order: -1; }
+}
+
 .nav__actions { display: flex; align-items: center; gap: 14px; }
 
 .nav__toggle {
@@ -299,6 +430,23 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .nav__mobile a:last-child { border-bottom: 0; }
 .nav__mobile-cta { color: var(--pink); font-family: var(--font-mono); font-size: 15px; letter-spacing: .06em; }
 .nav__mobile[data-open] { display: flex; }
+
+.nav__mobile-sub {
+  display: grid;
+  gap: 2px;
+  list-style: none;
+  margin: 2px 0 8px;
+  padding: 0 0 10px 14px;
+  border-left: 1px solid rgba(246,167,191,.3);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.nav__mobile-sub a {
+  padding-block: 7px;
+  border-bottom: 0;
+  font-size: 15px;
+  color: rgba(255,255,255,.62);
+}
+.nav__mobile-sub a:hover { color: var(--pink); }
 
 /* ============================================================
    HERO

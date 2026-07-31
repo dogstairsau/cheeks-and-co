@@ -73,6 +73,87 @@ function closeMenu() {
   nav?.classList.remove('is-menu-open');
 }
 
+/* ------------------------------------------------------------
+   Mega menu
+   Opens on hover (with a close delay so a diagonal mouse path to
+   the panel doesn't dismiss it) and on click/keyboard. Closes on
+   Escape, outside click, focus leaving, or scroll.
+   ------------------------------------------------------------ */
+function initMega() {
+  const wrap = document.querySelector('[data-mega]');
+  const toggle = document.querySelector('[data-mega-toggle]');
+  const panel = document.querySelector('[data-mega-panel]');
+  const scrim = document.querySelector('[data-mega-scrim]');
+  if (!wrap || !toggle || !panel) return;
+
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  let closeTimer = null;
+  let open = false;
+
+  function show() {
+    clearTimeout(closeTimer);
+    if (open) return;
+    open = true;
+    panel.hidden = false;
+    if (scrim) scrim.hidden = false;
+    // Next frame so the transition has a start value to animate from.
+    requestAnimationFrame(() => {
+      panel.setAttribute('data-open', '');
+      scrim?.setAttribute('data-open', '');
+    });
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+
+  function hide() {
+    clearTimeout(closeTimer);
+    if (!open) return;
+    open = false;
+    panel.removeAttribute('data-open');
+    scrim?.removeAttribute('data-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    // Keep it in the tree until the fade finishes, then take it out of
+    // the tab order.
+    closeTimer = setTimeout(() => {
+      if (open) return;
+      panel.hidden = true;
+      if (scrim) scrim.hidden = true;
+    }, 320);
+  }
+
+  const scheduleHide = () => {
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(hide, 180);
+  };
+
+  toggle.addEventListener('click', () => (open ? hide() : show()));
+
+  if (canHover) {
+    wrap.addEventListener('mouseenter', show);
+    wrap.addEventListener('mouseleave', scheduleHide);
+    scrim?.addEventListener('mouseenter', hide);
+  }
+
+  // Keyboard: opening on focus would trap tabbing past Services, so only
+  // close when focus genuinely leaves the group.
+  wrap.addEventListener('focusout', (e) => {
+    if (!wrap.contains(e.relatedTarget)) hide();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && open) {
+      hide();
+      toggle.focus();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (open && !wrap.contains(e.target)) hide();
+  });
+
+  scrim?.addEventListener('click', hide);
+  window.addEventListener('scroll', () => open && hide(), { passive: true });
+}
+
 function initNav() {
   if (!nav) return;
 
@@ -536,6 +617,7 @@ function init() {
 
   initSmoothScroll();
   initNav();
+  initMega();
   initAnchors();
   initServicePage(); // before initHero — the split runs on final text
   initHero();

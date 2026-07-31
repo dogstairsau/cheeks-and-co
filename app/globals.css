@@ -228,8 +228,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: 14px;
   color: rgba(255,255,255,.72);
 }
-.nav__links a { position: relative; padding-block: 4px; transition: color .3s ease; }
-.nav__links a::after {
+.nav__links > a { position: relative; padding-block: 4px; transition: color .3s ease; }
+.nav__links > a::after {
   content: '';
   position: absolute;
   left: 0; bottom: 0;
@@ -239,10 +239,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transform-origin: right;
   transition: transform .4s cubic-bezier(.22,1,.36,1);
 }
-.nav__links a:hover { color: var(--white); }
-.nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
-.nav__links a[aria-current="page"] { color: var(--pink); }
-.nav__links a[aria-current="page"]::after { transform: scaleX(1); }
+.nav__links > a:hover { color: var(--white); }
+.nav__links > a:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav__links > a[aria-current="page"] { color: var(--pink); }
+.nav__links > a[aria-current="page"]::after { transform: scaleX(1); }
 
 .nav__mobile a[aria-current="page"],
 .footer__nav a[aria-current="page"] { color: var(--pink); }
@@ -493,6 +493,67 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   display: grid;
   gap: clamp(22px, 3vw, 32px);
   justify-items: start;
+}
+
+/* ---------- Split hero ---------- */
+/* Type on the charcoal left, photograph bleeding off the right. Keeps the
+   brand's charcoal ground and Poppins scale while giving the photo real
+   presence — a full-bleed image behind the headline would need a scrim, and
+   the wall text inside the photo would fight the H1. */
+.hero--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  align-items: center;
+  gap: clamp(28px, 4vw, 60px);
+  padding-inline: 0;
+}
+/* Aligns the text column's left edge with the shell used by every other
+   section, instead of an arbitrary column gutter. */
+.hero--split .hero__inner {
+  margin-inline: 0;
+  max-width: none;
+  padding-left: max(var(--gutter), calc((100vw - var(--shell)) / 2));
+  padding-right: clamp(16px, 2vw, 32px);
+}
+
+.hero__media {
+  position: relative;
+  align-self: stretch;
+  min-height: min(72svh, 620px);
+  margin-block: clamp(16px, 3vh, 40px);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  overflow: hidden;
+}
+.hero__media img {
+  object-fit: cover;
+  /* Holds both faces in frame as the column narrows. */
+  object-position: 44% center;
+}
+
+/* The photo now carries the right-hand side, so the watermark moves behind
+   the type and the scroll cue steps out of the picture's way. */
+.hero--split .hero__watermark {
+  right: auto;
+  left: -20%;
+  height: 56%;
+  opacity: .08;
+}
+.hero--split .hero__scroll { display: none; }
+
+@media (max-width: 900px) {
+  .hero--split {
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 5vw, 44px);
+  }
+  .hero--split .hero__inner {
+    padding-inline: var(--gutter);
+  }
+  .hero__media {
+    min-height: 0;
+    aspect-ratio: 3 / 2;
+    margin-inline: var(--gutter) 0;
+    margin-bottom: 0;
+  }
 }
 
 .hero__title {

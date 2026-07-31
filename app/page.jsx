@@ -36,7 +36,7 @@ const PILLARS = [
 export default function HomePage() {
   return (
     <>
-      <section className="hero">
+      <section className="hero hero--split">
         <Image
           className="hero__watermark"
           src="/brand/cheek-mark.png"
@@ -77,6 +77,19 @@ export default function HomePage() {
           </dl>
         </div>
 
+        {/* Bleeds off the right edge rather than sitting behind the type —
+            no scrim needed, and the wall text in the photo doesn't compete
+            with the headline. */}
+        <div className="hero__media" data-hero-item>
+          <Image
+            src="/photos/chelsea-jacqui.webp"
+            alt="Chelsea Teelow and Jacqui Leopardi at the Cheeks &amp; Co. Media office, beside a wall reading “Plug into our energy and watch your world accelerate.”"
+            fill
+            sizes="(max-width: 900px) 100vw, 48vw"
+            priority
+          />
+        </div>
+
         <div className="hero__scroll" aria-hidden="true" data-hero-item>
           <span>Scroll</span>
           <i />
@@ -84,21 +97,6 @@ export default function HomePage() {
       </section>
 
       <Swoop flip from="charcoal" to="paper" />
-
-      <section className="showcase">
-        <div className="shell">
-          <figure className="showcase__figure" data-reveal>
-            <Image
-              src="/photos/chelsea-jacqui.webp"
-              alt="Chelsea Teelow and Jacqui Leopardi at the Cheeks &amp; Co. Media office, beside a wall reading “Plug into our energy and watch your world accelerate.”"
-              width={1500}
-              height={1000}
-              sizes="(max-width: 1240px) 100vw, 1240px"
-              priority
-            />
-          </figure>
-        </div>
-      </section>
 
       <Clients />
 
@@ -215,9 +213,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Testimonials eyebrow="In their words" title={<>Don&rsquo;t just<br />take our word</>} />
+      {/* Light variant + a swoop: the statement band is already charcoal, and
+          running the testimonials straight on from it read as one dead slab. */}
+      <Swoop flip from="charcoal" to="paper" />
 
-      <Cta />
+      <Testimonials
+        light
+        eyebrow="In their words"
+        title={<>Don&rsquo;t just<br />take our word</>}
+      />
+
+      <Cta from="paper" />
     </>
   );
 }

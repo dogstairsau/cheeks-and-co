@@ -17,6 +17,10 @@ const FOUNDERS = [
     name: 'Chelsea Teelow',
     role: 'Director of Cheek & Sparkle',
     photo: '/photos/chelsea.webp',
+    // Native dimensions differ per portrait; passing the real ones keeps
+    // next/image from reserving the wrong box and shifting layout.
+    w: 1365,
+    h: 2048,
     body: [
       'With over 20 years of experience across sales, marketing and media, Chelsea has worked with hundreds of brands — from small local businesses to major national companies across radio, digital and integrated media.',
       "Her career started in hospitality before moving into senior sales roles with Telstra and Southern Cross Austereo. She's known for her strong relationships, big ideas, and a track record of delivering results that move the needle.",
@@ -29,6 +33,8 @@ const FOUNDERS = [
     name: 'Jacqui Leopardi',
     role: 'Head of Making Everything Happen',
     photo: '/photos/jacqui.webp',
+    w: 1500,
+    h: 1000,
     reverse: true,
     body: [
       "Jacqui has built her career working with some of the world's most recognised brands, including Nestlé, Southern Cross Austereo and Red Bull Australia, where she held the role of State Manager. Along the way, she developed a sharp instinct for building brands that don't just look impressive in a deck but actually deliver meaningful, measurable growth.",
@@ -72,8 +78,8 @@ export default function AboutPage() {
         <div className="shell">
           <figure className="showcase__figure" data-reveal>
             <Image
-              src="/photos/team-foyer.webp"
-              alt={`The ${site.name} team in the office foyer`}
+              src="/photos/pair-kitchen.webp"
+              alt="Chelsea Teelow and Jacqui Leopardi at the Cheeks &amp; Co. Media studio"
               width={1500}
               height={1000}
               sizes="(max-width: 1240px) 100vw, 1240px"
@@ -92,7 +98,8 @@ export default function AboutPage() {
 
             <div className="prose prose--lead" data-reveal>
               <p>
-                {site.name} began the way many great ideas do: a little industry chit chat over
+                {site.name}{' '}
+                began the way many great ideas do: a little industry chit chat over
                 dinner, with a glass (or two) of champagne. Two former colleagues found themselves
                 reflecting on the state of marketing — the overcomplicated strategies, the constant
                 platform shifts, the reports that said a lot but meant very little. Beneath it all
@@ -140,8 +147,8 @@ export default function AboutPage() {
                 <Image
                   src={f.photo}
                   alt={f.name}
-                  width={1200}
-                  height={1600}
+                  width={f.w}
+                  height={f.h}
                   sizes="(max-width: 900px) 100vw, 38vw"
                 />
               </figure>

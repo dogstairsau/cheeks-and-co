@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Swoop from '@/components/Swoop';
 import ContactForm from '@/components/ContactForm';
+import SocialLinks from '@/components/SocialLinks';
 import { site } from '@/lib/site';
 
 export const metadata = {
@@ -77,10 +78,8 @@ export default function ContactPage() {
               </div>
               <div>
                 <dt>Follow</dt>
-                <dd className="contact__social">
-                  <a href={site.social.facebook} rel="noopener noreferrer nofollow" target="_blank">Facebook</a>
-                  <a href={site.social.instagram} rel="noopener noreferrer nofollow" target="_blank">Instagram</a>
-                  <a href={site.social.linkedin} rel="noopener noreferrer nofollow" target="_blank">LinkedIn</a>
+                <dd>
+                  <SocialLinks />
                 </dd>
               </div>
             </dl>

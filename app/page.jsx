@@ -54,9 +54,13 @@ export default function HomePage() {
             Are you ready to grow?
           </p>
 
-          <h1 className="hero__title" data-split>Where bold ideas meet real results</h1>
+          {/* The client's own headline. Kept as plain text because the
+              line-reveal rebuilds this node from textContent. */}
+          <h1 className="hero__title" data-split>
+            Independent marketing. Thoughtfully done, expertly delivered.
+          </h1>
 
-          <p className="hero__lead" data-hero-item>{site.tagline}</p>
+          <p className="hero__lead" data-hero-item>Where bold ideas meet real results.</p>
 
           <div className="hero__actions" data-hero-item>
             <Link className="btn btn--pink" href="/contact">Let&rsquo;s connect</Link>

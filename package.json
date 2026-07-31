@@ -2,7 +2,7 @@
   "name": "cheeks-and-co",
   "version": "1.0.0",
   "private": true,
-  "description": "Landing page for Cheeks & Co. Media \u2014 independent marketing collective, Adelaide SA.",
+  "description": "Website for Cheeks & Co. Media \u2014 independent marketing collective, Adelaide SA.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,8 +16,5 @@
     "next": "^16.2.12",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
-  },
-  "devDependencies": {
-    "vite": "^7.1.5"
   }
 }

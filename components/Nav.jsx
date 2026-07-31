@@ -40,23 +40,40 @@ export default function Nav() {
     closeMega();
   }, [pathname, closeMega]);
 
+  /* Open state is read through refs so the scroll effect can stay mounted
+     once. Depending on it directly re-ran the effect the moment the mega
+     opened, and its immediate first call closed it again. */
+  const megaOpenRef = useRef(false);
+  const menuOpenRef = useRef(false);
+  useEffect(() => { megaOpenRef.current = megaOpen; }, [megaOpen]);
+  useEffect(() => { menuOpenRef.current = menuOpen; }, [menuOpen]);
+
   /* Charcoal bar once scrolled; hide the bar on the way down. */
   useEffect(() => {
     let lastY = window.scrollY;
+    setStuck(lastY > 40);
+
     const onScroll = () => {
       const y = window.scrollY;
       setStuck(y > 40);
-      setHidden((prev) => {
-        if (menuOpen || megaOpen) return false;
-        return y > lastY && y > 300 ? true : y < lastY ? false : prev;
-      });
-      if (megaOpen) closeMega();
+
+      if (megaOpenRef.current) {
+        closeMega();
+        setHidden(false);
+      } else if (menuOpenRef.current) {
+        setHidden(false);
+      } else if (y > lastY && y > 300) {
+        setHidden(true);
+      } else if (y < lastY) {
+        setHidden(false);
+      }
+
       lastY = y;
     };
-    onScroll();
+
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, [menuOpen, megaOpen, closeMega]);
+  }, [closeMega]);
 
   useEffect(() => {
     const onKey = (e) => {

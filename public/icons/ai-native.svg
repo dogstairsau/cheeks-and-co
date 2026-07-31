@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-hidden="true">
+  <title>AI Native</title>
+  <g fill="none" stroke="#F6A7BF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Chip body -->
+    <rect x="96" y="96" width="208" height="208" rx="40"/>
+    <rect x="156" y="156" width="88" height="88" rx="20"/>
+
+    <!-- Pins -->
+    <path d="M150 96V56M200 96V56M250 96V56"/>
+    <path d="M150 344v-40M200 344v-40M250 344v-40"/>
+    <path d="M96 150H56M96 200H56M96 250H56"/>
+    <path d="M344 150h-40M344 200h-40M344 250h-40"/>
+  </g>
+
+  <!-- Sparkle: the bit that makes it read as AI rather than just hardware -->
+  <path
+    d="M310 40c0 26 14 40 40 40-26 0-40 14-40 40 0-26-14-40-40-40 26 0 40-14 40-40Z"
+    fill="#F6A7BF"
+  />
+</svg>

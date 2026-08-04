@@ -487,45 +487,104 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* ============================================================
    HERO
    ============================================================ */
-/* Blush, not charcoal. The guidelines set the brand's hero on a soft pink
-   surface with Off Black type; the dark-slab hero was the single thing
-   making this read as a generic agency site rather than as Cheeks & Co. */
+/* The header is the photograph, graded into the brand pinks rather than sat
+   under a flat scrim. A scrim heavy enough to hold Off Black at display size
+   turns the picture grey; grading the image instead keeps it crisp and lets
+   the overlay stay light. */
 .hero {
   position: relative;
   isolation: isolate;
-  background:
-    radial-gradient(120% 90% at 85% 8%, rgba(249,168,192,.55) 0%, rgba(249,168,192,0) 62%),
-    radial-gradient(90% 70% at 2% 96%, rgba(253,217,232,.9) 0%, rgba(253,217,232,0) 70%),
-    linear-gradient(168deg, #FEEAF2 0%, #FDE2EE 52%, var(--blush) 100%);
+  background: var(--blush);
   color: var(--charcoal);
-  min-height: auto;
+  min-height: min(92svh, 840px);
   display: flex;
   align-items: center;
-  padding: clamp(116px, 12vh, 150px) var(--gutter) clamp(34px, 4.5vh, 52px);
+  padding: clamp(124px, 15vh, 172px) var(--gutter) clamp(40px, 6vh, 72px);
   overflow: hidden;
 }
 
-/* Height-based so the mark bleeds off the right edge only. Bleeding off the
-   bottom too put a flat cut directly above the swoop, which read as a stray
-   band rather than a watermark. */
-.hero__watermark {
+.hero__photo {
   position: absolute;
-  z-index: -1;
-  right: -15%;
-  /* Centred with auto margins, not a transform: GSAP animates this element
-     and clears the independent `translate` property when it does. */
-  top: 0;
-  bottom: 0;
-  margin-block: auto;
-  height: 66%;
-  width: auto;
-  max-width: none;
-  opacity: .26;
+  z-index: -4;
+  /* Overscanned so the parallax drift never pulls an edge into frame. */
+  inset: -10% 0;
+  isolation: isolate;
   pointer-events: none;
   will-change: transform;
 }
-@media (max-width: 760px) {
-  .hero__watermark { right: -34%; height: 46%; opacity: .2; }
+.hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* A seated shot, framed right. A standing group photo gets decapitated by
+     a frame this wide; seated subjects sit at mid-height and crop cleanly,
+     and this one puts the faces clear of the headline. */
+  object-position: 72% 50%;
+  scale: 1.14;
+  transform-origin: 62% 50%;
+  /* Flattened to one channel, then warmed, so the duotone below has clean
+     tones to work with — grading a colour image just muddies both. */
+  filter: grayscale(1) sepia(.22) brightness(1.04) contrast(.96);
+}
+
+/* Shadows pulled toward Cool Rose Pink. */
+.hero__photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--pink);
+  mix-blend-mode: multiply;
+}
+/* Highlights lifted to Warm Cream, so the picture tops out light enough for
+   Off Black type to sit anywhere on it. */
+.hero__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #FDE9F1;
+  mix-blend-mode: screen;
+  opacity: .3;
+}
+
+/* A light blush veil, weighted to the copy side. Well under half opacity —
+   the grade is doing the work, this only steadies the left column. */
+.hero::before {
+  content: '';
+  position: absolute;
+  z-index: -3;
+  inset: 0;
+  pointer-events: none;
+  background:
+    /* Lands on the blush the swoop below expects, so the seam stays clean. */
+    linear-gradient(to bottom, rgba(253,217,232,0) 62%, var(--blush) 100%),
+    /* Near-solid across the copy column — the 11px eyebrow measures 2:1 on
+       bare photograph — then falling away so the right half stays a picture. */
+    linear-gradient(101deg,
+      rgba(254,240,246,.96) 0%,
+      rgba(254,236,243,.93) 34%,
+      rgba(253,226,238,.7) 50%,
+      rgba(252,208,227,.26) 68%,
+      rgba(250,186,208,.04) 86%,
+      rgba(249,168,192,0) 100%);
+}
+
+@media (max-width: 900px) {
+  /* Stacked, the copy runs the full width, so the veil has to as well — which
+     leaves the photograph nowhere to read. The header gets a deeper foot and
+     the veil lets go over it, so the picture lands clear of every line. */
+  .hero { padding-bottom: clamp(104px, 17vh, 168px); }
+  .hero::before {
+    background:
+      linear-gradient(176deg,
+        rgba(254,240,246,.96) 0%,
+        rgba(254,236,243,.95) 58%,
+        rgba(253,230,240,.88) 76%,
+        rgba(251,204,223,.32) 90%,
+        rgba(249,168,192,.06) 100%);
+  }
+  /* A tall slice takes no vertical crop, so only the horizontal framing
+     matters here — this one lands on the pair rather than empty table. */
+  .hero__photo img { object-position: 78% 50%; scale: 1; }
 }
 
 /* Soft out-of-focus blooms — the "fluff". Purely decorative, so they sit
@@ -576,27 +635,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 
-/* A letterbox band across the full width of the copy column. Nothing sits
-   beside the headline — the photograph reads as part of the header rather
-   than as a second column. */
-.hero__banner {
-  width: 100%;
-  margin: clamp(12px, 2vw, 22px) 0 0;
-  aspect-ratio: 3.6 / 1;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 0 34px 72px -46px rgba(140, 52, 84, .62);
-}
-.hero__banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 34%;
-}
-@media (max-width: 760px) {
-  /* A 3.2:1 slot on a phone is a slit — open it back up. */
-  .hero__banner { aspect-ratio: 16 / 10; }
-}
 
 .hero__facts {
   display: grid;

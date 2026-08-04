@@ -498,10 +498,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     radial-gradient(90% 70% at 2% 96%, rgba(253,217,232,.9) 0%, rgba(253,217,232,0) 70%),
     linear-gradient(168deg, #FEEAF2 0%, #FDE2EE 52%, var(--blush) 100%);
   color: var(--charcoal);
-  min-height: auto;
+  min-height: min(76svh, 700px);
   display: flex;
   align-items: center;
-  padding: clamp(116px, 12vh, 150px) var(--gutter) clamp(34px, 4.5vh, 52px);
+  padding: clamp(124px, 14vh, 164px) var(--gutter) clamp(44px, 6vh, 76px);
   overflow: hidden;
 }
 
@@ -576,27 +576,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 
-/* A letterbox band across the full width of the copy column. Nothing sits
-   beside the headline — the photograph reads as part of the header rather
-   than as a second column. */
-.hero__banner {
-  width: 100%;
-  margin: clamp(12px, 2vw, 22px) 0 0;
-  aspect-ratio: 3.6 / 1;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 0 34px 72px -46px rgba(140, 52, 84, .62);
-}
-.hero__banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 34%;
-}
-@media (max-width: 760px) {
-  /* A 3.2:1 slot on a phone is a slit — open it back up. */
-  .hero__banner { aspect-ratio: 16 / 10; }
-}
 
 .hero__facts {
   display: grid;
@@ -678,9 +657,42 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .crumbs a:hover { color: var(--charcoal); }
 
 /* ============================================================
+   HERO FOOT
+   ============================================================ */
+.hero-foot {
+  position: relative;
+  isolation: isolate;
+  background: var(--blush);
+  height: clamp(280px, 34vw, 480px);
+  overflow: hidden;
+}
+.hero-foot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Low enough that the blush curve clears their heads — the curve dips
+     nearly 100px at its deepest, and a tighter crop clips them. */
+  object-position: center 24%;
+}
+/* The curves overlap their own height into the picture, so both seams are
+   covered whatever fractional height the fluid svg lands on. */
+.hero-foot .swoop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-block: 0;
+}
+.hero-foot .swoop--cap-top { top: -1px; }
+.hero-foot .swoop--cap-bottom { bottom: -1px; }
+
+@media (max-width: 700px) {
+  .hero-foot { height: clamp(260px, 62vw, 340px); }
+  .hero-foot img { object-position: 58% 34%; }
+}
+
+/* ============================================================
    SHOWCASE — full-width photograph
    ============================================================ */
-.showcase { background: var(--paper); padding-block: clamp(12px, 2vw, 28px) 0; }
 .showcase__figure { border-radius: var(--radius-lg); overflow: hidden; }
 .showcase__figure img {
   width: 100%;
@@ -1021,6 +1033,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .swoop path { fill: var(--to); }
 .swoop--flip svg { transform: scaleX(-1); }
+
+.swoop--cap { background: transparent; }
+.swoop--cap path { fill: var(--from); }
 
 .swoop--from-paper    { --from: var(--paper); }
 .swoop--from-blush    { --from: var(--blush); }

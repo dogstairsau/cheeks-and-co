@@ -37,19 +37,19 @@ export default function HomePage() {
   return (
     <>
       <section className="hero">
-        {/* The header is the photograph. It's graded into the brand pinks
-            rather than sat under a flat scrim — decorative, so it carries no
-            description; the same shot is captioned in the showcase below. */}
-        <div className="hero__photo" aria-hidden="true" data-watermark>
-          <Image
-            src="/photos/boardroom.webp"
-            alt=""
-            width={1500}
-            height={1000}
-            sizes="100vw"
-            priority
-          />
-        </div>
+        <span className="blob blob--a" aria-hidden="true" />
+        <span className="blob blob--b" aria-hidden="true" />
+
+        <Image
+          className="hero__watermark"
+          src="/brand/cheek-mark.png"
+          alt=""
+          aria-hidden="true"
+          width={602}
+          height={470}
+          data-watermark
+          priority
+        />
 
         <div className="hero__inner">
           <p className="eyebrow eyebrow--rose" data-hero-item>
@@ -70,6 +70,17 @@ export default function HomePage() {
             <Link className="btn btn--outline-dark" href="/services">See what we do</Link>
           </div>
 
+          <figure className="hero__banner" data-hero-item>
+            <Image
+              src="/photos/chelsea-jacqui.webp"
+              alt="Chelsea Teelow and Jacqui Leopardi at the Cheeks &amp; Co. Media office, beside a wall reading “Plug into our energy and watch your world accelerate.”"
+              width={1500}
+              height={1000}
+              sizes="(max-width: 1240px) 100vw, 1240px"
+              priority
+            />
+          </figure>
+
           <dl className="hero__facts" data-hero-item>
             {FACTS.map(([term, value]) => (
               <div className="hero__fact" key={term}>
@@ -87,8 +98,8 @@ export default function HomePage() {
         <div className="shell">
           <figure className="showcase__figure" data-reveal>
             <Image
-              src="/photos/chelsea-jacqui.webp"
-              alt="Chelsea Teelow and Jacqui Leopardi at the Cheeks &amp; Co. Media office, beside a wall reading “Plug into our energy and watch your world accelerate.”"
+              src="/photos/team-foyer.webp"
+              alt="The Cheeks &amp; Co. Media team in the office foyer"
               width={1500}
               height={1000}
               sizes="(max-width: 1240px) 100vw, 1240px"

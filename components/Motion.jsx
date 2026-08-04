@@ -70,11 +70,10 @@ export default function Motion() {
         if (host) {
           gsap.fromTo(
             watermark,
-            { yPercent: 0 },
+            { yPercent: 0, rotate: 0 },
             {
-              /* Drift only — the header art is a photograph now, and rotating
-                 it swings the frame off its overscan. */
-              yPercent: -7,
+              yPercent: -14,
+              rotate: -6,
               ease: 'none',
               scrollTrigger: { trigger: host, start: 'top top', end: 'bottom top', scrub: 1 },
             }

@@ -498,10 +498,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     radial-gradient(90% 70% at 2% 96%, rgba(253,217,232,.9) 0%, rgba(253,217,232,0) 70%),
     linear-gradient(168deg, #FEEAF2 0%, #FDE2EE 52%, var(--blush) 100%);
   color: var(--charcoal);
-  min-height: min(92svh, 820px);
+  min-height: auto;
   display: flex;
   align-items: center;
-  padding: clamp(124px, 15vh, 172px) var(--gutter) clamp(36px, 5vh, 60px);
+  padding: clamp(116px, 12vh, 150px) var(--gutter) clamp(34px, 4.5vh, 52px);
   overflow: hidden;
 }
 
@@ -576,6 +576,28 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 
+/* A letterbox band across the full width of the copy column. Nothing sits
+   beside the headline — the photograph reads as part of the header rather
+   than as a second column. */
+.hero__banner {
+  width: 100%;
+  margin: clamp(12px, 2vw, 22px) 0 0;
+  aspect-ratio: 3.6 / 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 34px 72px -46px rgba(140, 52, 84, .62);
+}
+.hero__banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 34%;
+}
+@media (max-width: 760px) {
+  /* A 3.2:1 slot on a phone is a slit — open it back up. */
+  .hero__banner { aspect-ratio: 16 / 10; }
+}
+
 .hero__facts {
   display: grid;
   /* Fixed 4-up. An earlier auto-fit min-track change (meant for the logo
@@ -583,7 +605,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 22px 28px;
   width: 100%;
-  max-width: 760px;
   margin-top: clamp(24px, 4vw, 44px);
   padding-top: 26px;
   border-top: 1px solid rgba(196,96,133,.22);
@@ -603,32 +624,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: clamp(15px, 1.5vw, 18px);
 }
 
-.hero__scroll {
-  position: absolute;
-  right: var(--gutter);
-  bottom: clamp(28px, 5vh, 52px);
-  display: grid;
-  justify-items: center;
-  gap: 12px;
-  font-family: var(--font-label);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--rose-ink);
-}
-.hero__scroll i {
-  display: block;
-  width: 1.5px; height: 46px;
-  border-radius: 999px;
-  background: linear-gradient(to bottom, var(--rose), transparent);
-  animation: drift 2.4s ease-in-out infinite;
-  transform-origin: top;
-}
-@keyframes drift {
-  0%, 100% { transform: scaleY(.3); opacity: .4; }
-  50% { transform: scaleY(1); opacity: 1; }
-}
 
 /* ============================================================
    PAGE HERO — inner pages
@@ -1922,7 +1917,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .nav__toggle { display: inline-flex; }
   .nav__actions .btn--sm { display: none; }
   .nav.is-menu-open { background: rgba(250,248,245,.94); backdrop-filter: blur(16px); }
-  .hero__scroll { display: none; }
   .hero { min-height: auto; }
 }
 

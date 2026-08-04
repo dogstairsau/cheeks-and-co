@@ -70,6 +70,17 @@ export default function HomePage() {
             <Link className="btn btn--outline-dark" href="/services">See what we do</Link>
           </div>
 
+          <figure className="hero__banner" data-hero-item>
+            <Image
+              src="/photos/chelsea-jacqui.webp"
+              alt="Chelsea Teelow and Jacqui Leopardi at the Cheeks &amp; Co. Media office, beside a wall reading “Plug into our energy and watch your world accelerate.”"
+              width={1500}
+              height={1000}
+              sizes="(max-width: 1240px) 100vw, 1240px"
+              priority
+            />
+          </figure>
+
           <dl className="hero__facts" data-hero-item>
             {FACTS.map(([term, value]) => (
               <div className="hero__fact" key={term}>
@@ -79,11 +90,6 @@ export default function HomePage() {
             ))}
           </dl>
         </div>
-
-        <div className="hero__scroll" aria-hidden="true" data-hero-item>
-          <span>Scroll</span>
-          <i />
-        </div>
       </section>
 
       <Swoop flip from="blush" to="paper" />
@@ -92,12 +98,11 @@ export default function HomePage() {
         <div className="shell">
           <figure className="showcase__figure" data-reveal>
             <Image
-              src="/photos/chelsea-jacqui.webp"
-              alt="Chelsea Teelow and Jacqui Leopardi at the Cheeks &amp; Co. Media office, beside a wall reading “Plug into our energy and watch your world accelerate.”"
+              src="/photos/team-foyer.webp"
+              alt="The Cheeks &amp; Co. Media team in the office foyer"
               width={1500}
               height={1000}
               sizes="(max-width: 1240px) 100vw, 1240px"
-              priority
             />
           </figure>
         </div>

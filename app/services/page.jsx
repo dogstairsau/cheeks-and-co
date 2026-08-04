@@ -30,7 +30,7 @@ export default function ServicesPage() {
           priority
         />
         <div className="shell page-hero__inner">
-          <p className="eyebrow eyebrow--pink" data-hero-item>
+          <p className="eyebrow eyebrow--rose" data-hero-item>
             <span className="eyebrow__dot" aria-hidden="true" />
             Our services
           </p>
@@ -41,7 +41,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <Swoop flip from="charcoal" to="paper" />
+      <Swoop flip from="blush" to="paper" />
 
       <section className="section services-intro">
         <div className="shell">

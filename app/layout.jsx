@@ -1,5 +1,5 @@
 import './globals.css';
-import { poppins, workSans, jetbrainsMono } from './fonts';
+import { cormorant, poppins } from './fonts';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Motion from '@/components/Motion';
@@ -23,7 +23,7 @@ export const metadata = {
   icons: { icon: '/brand/cheek-mark.png', apple: '/brand/cheek-mark.png' },
 };
 
-export const viewport = { themeColor: '#2C2C2C' };
+export const viewport = { themeColor: '#FAF8F5' };
 
 const orgJsonLd = {
   '@context': 'https://schema.org',
@@ -66,7 +66,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }`;
 
 export default function RootLayout({ children }) {
-  const fontVars = `${poppins.variable} ${workSans.variable} ${jetbrainsMono.variable}`;
+  const fontVars = `${cormorant.variable} ${poppins.variable}`;
 
   return (
     <html lang="en-AU" className={fontVars}>

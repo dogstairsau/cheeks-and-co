@@ -37,6 +37,9 @@ export default function HomePage() {
   return (
     <>
       <section className="hero">
+        <span className="blob blob--a" aria-hidden="true" />
+        <span className="blob blob--b" aria-hidden="true" />
+
         <Image
           className="hero__watermark"
           src="/brand/cheek-mark.png"
@@ -49,7 +52,7 @@ export default function HomePage() {
         />
 
         <div className="hero__inner">
-          <p className="eyebrow eyebrow--pink" data-hero-item>
+          <p className="eyebrow eyebrow--rose" data-hero-item>
             <span className="eyebrow__dot" aria-hidden="true" />
             Are you ready to grow?
           </p>
@@ -63,8 +66,8 @@ export default function HomePage() {
           <p className="hero__lead" data-hero-item>Where bold ideas meet real results.</p>
 
           <div className="hero__actions" data-hero-item>
-            <Link className="btn btn--pink" href="/contact">Let&rsquo;s connect</Link>
-            <Link className="btn btn--ghost" href="/services">See what we do</Link>
+            <Link className="btn btn--dark" href="/contact">Let&rsquo;s connect</Link>
+            <Link className="btn btn--outline-dark" href="/services">See what we do</Link>
           </div>
 
           <dl className="hero__facts" data-hero-item>
@@ -83,7 +86,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Swoop flip from="charcoal" to="paper" />
+      <Swoop flip from="blush" to="paper" />
 
       <section className="showcase">
         <div className="shell">

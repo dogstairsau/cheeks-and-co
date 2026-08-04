@@ -189,7 +189,7 @@ export default function Nav() {
                       Tell us what you&rsquo;re trying to grow. We&rsquo;ll tell you honestly what
                       will move the needle — and what won&rsquo;t.
                     </p>
-                    <Link className="btn btn--pink btn--sm" href="/contact">Let&rsquo;s talk</Link>
+                    <Link className="btn btn--rose btn--sm" href="/contact">Let&rsquo;s talk</Link>
                     <Link className="mega__all" href="/services">
                       See all services <span aria-hidden="true">→</span>
                     </Link>
@@ -206,7 +206,7 @@ export default function Nav() {
           </nav>
 
           <div className="nav__actions">
-            <Link className="btn btn--pink btn--sm" href="/contact">Let&rsquo;s connect</Link>
+            <Link className="btn btn--rose btn--sm" href="/contact">Let&rsquo;s connect</Link>
             <button
               className="nav__toggle"
               type="button"

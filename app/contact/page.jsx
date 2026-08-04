@@ -26,7 +26,7 @@ export default function ContactPage() {
           priority
         />
         <div className="shell page-hero__inner">
-          <p className="eyebrow eyebrow--pink" data-hero-item>
+          <p className="eyebrow eyebrow--rose" data-hero-item>
             <span className="eyebrow__dot" aria-hidden="true" />
             Say hello…
           </p>
@@ -35,7 +35,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Swoop flip from="charcoal" to="paper" />
+      <Swoop flip from="blush" to="paper" />
 
       <section className="section contact">
         <div className="shell contact__grid">

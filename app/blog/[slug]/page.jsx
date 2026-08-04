@@ -76,7 +76,7 @@ export default async function PostPage({ params }) {
         </div>
       </section>
 
-      <Swoop flip from="charcoal" to="paper" />
+      <Swoop flip from="blush" to="paper" />
 
       <section className="section article">
         <div className="shell article__shell">

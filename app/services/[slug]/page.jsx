@@ -85,13 +85,13 @@ export default async function ServicePage({ params }) {
           <p className="page-hero__lead" data-hero-item>{service.tag}</p>
 
           <div className="hero__actions" data-hero-item>
-            <Link className="btn btn--pink" href="/contact">Let&rsquo;s talk about it</Link>
-            <Link className="btn btn--ghost" href="/services">All services</Link>
+            <Link className="btn btn--dark" href="/contact">Let&rsquo;s talk about it</Link>
+            <Link className="btn btn--outline-dark" href="/services">All services</Link>
           </div>
         </div>
       </section>
 
-      <Swoop flip from="charcoal" to="paper" />
+      <Swoop flip from="blush" to="paper" />
 
       <section className="section service-detail">
         <div className="shell">
@@ -131,7 +131,7 @@ export default async function ServicePage({ params }) {
                   Tell us what you&rsquo;re trying to grow. We&rsquo;ll tell you honestly what will
                   move the needle — and what won&rsquo;t.
                 </p>
-                <Link className="btn btn--dark btn--sm" href="/contact">Get in touch</Link>
+                <Link className="btn btn--pink btn--sm" href="/contact">Get in touch</Link>
               </div>
             </aside>
           </div>

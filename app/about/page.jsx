@@ -60,7 +60,7 @@ export default function AboutPage() {
           priority
         />
         <div className="shell page-hero__inner">
-          <p className="eyebrow eyebrow--pink" data-hero-item>
+          <p className="eyebrow eyebrow--rose" data-hero-item>
             <span className="eyebrow__dot" aria-hidden="true" />
             About us
           </p>
@@ -72,7 +72,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Swoop flip from="charcoal" to="paper" />
+      <Swoop flip from="blush" to="paper" />
 
       <section className="section story">
         <div className="shell">
